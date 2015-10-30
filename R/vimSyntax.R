@@ -54,15 +54,16 @@ basePackages  <-  c("stats", "graphics", "grDevices", "utils", "datasets", "meth
 #' 
 #' }
 vimSyntax  <-  function(packages=union(basePackages,row.names(installed.packages())),
-						syntax.vim=readLines("~/../temp/defaultsyntax.txt"),
+						syntax.vim=RCurl::getURL("https://raw.githubusercontent.com/jdthorpe/Vim-R-Syntax/master/R.vim"),
 						S3classes = "data.table",
 						outfile=NULL){
 
+	lines  <-  base::strsplit(syntax.vim,"\n")
 	# READ IN THE EXISTING KEY WORDS
 	keyWords  <- list() 
 	cur_line=0
 	keyword_line=0
-	for(ll in  syntax.vim){
+	for(ll in  lines){
 		cur_line <- cur_line +1
 		if(length(ll) && grepl("^\\s*syn\\s*keyword\\s*(\\w)",ll)){
 			(key= gsub("\\s*syn\\s*keyword\\s*(\\w+).*","\\1",ll))
@@ -102,9 +103,9 @@ vimSyntax  <-  function(packages=union(basePackages,row.names(installed.packages
 									   allClasses),
 									 allNames))
 
-	out  <-  paste(c(syntax.vim[1:r_package_other_line],
+	out  <-  paste(c(lines[1:r_package_other_line],
 		   	paste("  syn keyword rPackageFuns", base::strwrap(do.call(paste,as.list(NewKeyWords)),70)),
-		   	syntax.vim[-(1:r_package_other_line)]),
+		   	lines[-(1:r_package_other_line)]),
 		  collapse = '\n')
 
 	if(!is.null(outfile))
