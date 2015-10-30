@@ -1,0 +1,11 @@
+Package: vim.R.syntax
+Title: Create a syntax/R.vim file
+Version: 0.1
+Author@R: Jason Thorpe <jdthorpe@gmail.com>
+Title: Create a custom syntax/R.vim file with keywords from your favorite R packages
+Maintainer: Jason Thorpe <jdthorpe@gmail.com>
+License: Artistic-2.0
+Date: 2015-10-29
+LazyData: true
+KeepSource: true
+Depends: R (>= 2.10)
