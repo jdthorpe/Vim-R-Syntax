@@ -14,8 +14,10 @@ Start by loading or installing `vim_R_keywords`:
 
 	if(!require("devtools"))
 		install.packages("devtools")
-	if(!require("vim.R.syntax"))
+	if(!require("vim.R.syntax")){
 		devtools::install_github("jdthorpe/vim-R-syntax")
+		library(vim.R.syntax)
+	}
 
 The easiest way to use the syntax file is with a package 
 manager like [pathogen](https://github.com/tpope/vim-pathogen) 
@@ -49,7 +51,7 @@ limit the package to your favorite few dozen packages.
 					  "TTR", "xlsx", "xml2", "yaml", "zoo",
 					  "nlme", "parallel", "splines", "survival")
 
-	vimSyntax(myPackages, 
+	vimSyntax(packages, 
               S3classes = "data.table",
 			  outfile = file.path(BUNDLE,"vim-R-keywords/syntax/r.vim"))
 

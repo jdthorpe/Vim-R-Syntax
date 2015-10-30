@@ -26,11 +26,11 @@ basePackages  <-  c("stats", "graphics", "grDevices", "utils", "datasets", "meth
 #' Generate a custom R.vim syntax file
 #'
 #' Generate a custom R.vim syntax file
+#' @export
 #' @param packages packages from which function names should be included in your syntax file
 #' @param syntax.vim a compatible Syntax file from which to build your custom syntax file
 #' @param S3classes a vector of classes to be included when matching S3 methods
 #' @param outfile Optional; a file name either a character string naming a file or a connection open for writing. otherwise, the r.vim file is returned to the console.
-#' @export
 #' @note  
 #' vimSyntax() searches for the names of S3 classes using a few heuristic rules, but may overlook S3 
 #' classes whose name contains a dot (e.g. "data.table"), which affects the exported keywords.
